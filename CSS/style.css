@@ -1,0 +1,353 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(../Images/namaz5.jpg);
+  background-position: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Inter", sans-serif; /* You can change to Apple-like font */
+  color: #fff;
+}
+
+/* ============= Login and Signup Form Styling Start ============= */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  backdrop-filter: 8px;
+}
+
+.form form {
+  width: 600px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: rgba(95, 90, 90, 0.2);
+  border-radius: 12px;
+  border: 1px solid #00ffc3;
+  box-shadow: 0 0 10px rgba(0, 255, 191, 0.4);
+  backdrop-filter: blur(3px);
+}
+
+.form form h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 55px;
+  font-variant: small-caps;
+  text-decoration: underline dashed;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.form form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 25px;
+  color: #ffffffcc;
+}
+
+.form form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form form input:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 4px #00ffc3;
+}
+
+.form form input::placeholder {
+  color: #ccc;
+}
+
+.form form p {
+  margin-top: 10px;
+  font-size: 25px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #977f7f;
+  text-align: center;
+}
+
+.form form a {
+  background-image: linear-gradient(
+    to right,
+    #54b3d6,
+    #54b3d6 50%,
+    #7455a7 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.5s ease-in-out;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.form form a:before {
+  content: "";
+  background: #54b3d6;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.5s ease-in-out;
+}
+
+.form form a:hover {
+  background-position: 0;
+}
+
+.form form a:hover::before {
+  width: 100%;
+}
+
+.form form button {
+  width: 30%;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+  margin: 15px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  cursor: pointer;
+}
+.form form button:hover {
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+/* ============= Login and Signup Form Styling End ============= */
+
+
+/* ============= Notification Styling Start ============= */
+#notification {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #00ffb3;
+    color: #000000;
+  font-size: 35px;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: none;
+}
+
+
+/* ============= Notification Styling End ============= */
+
+
+/* ============= Dashboard Styling Start ============= */
+
+/* ========== Navbar Styling Start ========== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.3); /* Transparent dark */
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 195, 0.4);
+  box-shadow: 0 0 10px rgba(0, 255, 191, 0.4);
+  margin: 20px auto;
+  max-width: 1100px;
+}
+
+/* Navbar List */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Links */
+.navbar ul li a {
+  background-image: linear-gradient(
+    to right,
+    #4b4e4e,
+    #a5b1b6 50%,
+    #e7dddd 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.5s ease-in-out;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.navbar ul li a:before {
+  content: "";
+  background: #535a5c;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.5s ease-in-out;
+}
+
+.navbar ul li a:hover {
+  background-position: 0;
+}
+
+.navbar ul li a:hover::before {
+  width: 100%;
+}
+
+/* Logout Button */
+.navbar button {
+  padding: 10px 20px;
+  background-color: rgba(0, 255, 195, 0.1);
+  color: #00ffc3;
+  border: 1px solid #00ffc3;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: #00ffc3;
+  color: #000;
+  box-shadow: 0 0 10px #00ffc3;
+}
+
+/* ========== Navbar Styling End ========== */
+
+/* ======== Main Page Styling start======== */
+.mainPage {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ======== Card ======== */
+.card {
+    background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid #00ffc3;
+  box-shadow: 0 0 20px rgba(0, 255, 195, 0.3);
+  width: 100%;
+  max-width: 600px;
+}
+
+/* ======== Card Header ======== */
+.cardHeader h2,
+.cardHeader h3,
+.cardHeader p {
+  text-align: center;
+  margin: 8px 0;
+}
+
+.cardHeader h2 {
+  font-size: 45px;
+  color: #00ffc3;
+}
+
+.cardHeader h3 {
+    font-size: 35px;
+}
+
+.cardHeader p {
+  font-size: 25px;
+  color: #ccc;
+}
+
+/* ======== Namaz Tracker ======== */
+.namazTracker ul {
+    list-style: none;
+    padding: 0;
+  margin-top: 30px;
+}
+
+.namazTracker ul li {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(0, 255, 195, 0.3);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.namazTracker ul li:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.namazTracker ul li p {
+    margin: 0;
+    font-size: 18px;
+  font-weight: 500;
+}
+
+/* ======== Namaz Buttons ======== */
+.namazTracker ul li button {
+  background-color: #00ffc3;
+  border: none;
+  color: black;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.namazTracker ul li button:hover {
+    background-color: #00cfa3;
+}
+
+/* ======== Main Page Styling End======== */
+
+/* ============= Dashboard Styling End ============= */
