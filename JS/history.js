@@ -12,15 +12,15 @@ import { db,auth,getFirestore, collection, query, where, getDocs, doc, getDoc,on
 document.addEventListener('DOMContentLoaded', () => {
   onAuthStateChanged(auth, (user) => {
     const uidLocal = localStorage.getItem("uid");
-    if (!uidLocal || !user || user.uid !== uidLocal) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'رسائی ممنوع',
-        text: 'براہ کرم پہلے لاگ ان کریں!',
-        confirmButtonText: 'لاگ ان پر جائیں'
-      }).then(() => {
-        window.location.replace("../index.html");
-      });
+     if (!user|| !uidLocal || user.uid !== uidLocal) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Access Denied',
+      text: 'Please login first to access this page!',
+      confirmButtonText: 'Go to Login'
+    }).then(() => {
+      window.location.replace("../index.html");
+    });
     } else {
       showUserInfoInHeader(user);
     }
@@ -149,9 +149,9 @@ if (logoutButton) {
   logoutButton.addEventListener("click", async () => {
     Swal.fire({
       icon: 'success',
-      title: 'لاگ آؤٹ',
-      text: 'آپ کامیابی سے لاگ آؤٹ ہو گئے ہیں!',
-      confirmButtonText: 'ٹھیک ہے'
+      title: 'Logout Successful',
+      text: 'You have been logged out successfully!',
+      confirmButtonText: 'OK'
     }).then(() => {
       window.location.replace("../index.html");
     });

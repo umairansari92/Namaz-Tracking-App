@@ -9,17 +9,17 @@ import {
 } from "../firebase.js";
 // 🔐 Auth Check
 const privateRouteCheck = () => {
-  const uidLocal = localStorage.getItem("uid");
+  const uid = localStorage.getItem("uid");
   onAuthStateChanged(auth, (user) => {
-    if (!uidLocal || !user || user.uid !== uidLocal) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'رسائی ممنوع',
-        text: 'براہ کرم پہلے لاگ ان کریں!',
-        confirmButtonText: 'لاگ ان پر جائیں'
-      }).then(() => {
-        window.location.replace("../index.html");
-      });
+     if (!user||!uid || user.uid !== uid) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Access Denied',
+      text: 'Please login first to access this page!',
+      confirmButtonText: 'Go to Login'
+    }).then(() => {
+      window.location.replace("../index.html");
+    });
     } else {
       // ✅ User authenticated, load card header
       loadCardHeader(user);

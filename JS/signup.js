@@ -32,9 +32,9 @@ const signUpHandler = async () => {
         if (!firstName.value || !lastName.value || !email.value || !password.value) {
             Swal.fire({
                 icon: 'error',
-                title: 'تمام فیلڈز لازمی ہیں',
-                text: 'براہ کرم تمام معلومات درج کریں!',
-                confirmButtonText: 'ٹھیک ہے'
+                title: 'Required Fields',
+                text: 'Please fill in all fields!',
+                confirmButtonText: 'OK'
             });
             return;
         }
@@ -58,18 +58,18 @@ const signUpHandler = async () => {
         await setDoc(doc(db, "users", userUId), userObject);
         Swal.fire({
             icon: 'success',
-            title: 'رجسٹریشن کامیاب',
-            text: 'آپ کا اکاؤنٹ بن گیا ہے!',
-            confirmButtonText: 'جاری رکھیں'
+            title: 'Registration Successful',
+            text: 'Your account has been created!',
+            confirmButtonText: 'Continue'
         }).then(() => {
             window.location.replace("../index.html");
         });
     } catch (error) {
         Swal.fire({
             icon: 'error',
-            title: 'رجسٹریشن ناکام',
+            title: 'Registration Failed',
             text: error.message,
-            confirmButtonText: 'ٹھیک ہے'
+            confirmButtonText: 'OK'
         });
     }
 }

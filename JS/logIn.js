@@ -23,9 +23,9 @@ const signInHandler = async () => {
         if (!email.value || !password.value) {
             Swal.fire({
                 icon: 'error',
-                title: 'تمام فیلڈز لازمی ہیں',
-                text: 'براہ کرم ای میل اور پاسورڈ درج کریں!',
-                confirmButtonText: 'ٹھیک ہے'
+                title: 'Required Fields',
+                text: 'Please enter both email and password!',
+                confirmButtonText: 'OK'
             });
             return;
         }
@@ -34,18 +34,18 @@ const signInHandler = async () => {
         localStorage.setItem("uid", response.user.uid);
         Swal.fire({
             icon: 'success',
-            title: 'لاگ ان کامیاب',
-            text: 'خوش آمدید!',
-            confirmButtonText: 'جاری رکھیں'
+            title: 'Login Successful',
+            text: 'Welcome!',
+            confirmButtonText: 'Continue'
         }).then(() => {
             window.location.replace("../HTML/dashboard.html");
         });
     } catch (error) {
         Swal.fire({
             icon: 'error',
-            title: 'لاگ ان ناکام',
+            title: 'Login Failed',
             text: error.message,
-            confirmButtonText: 'ٹھیک ہے'
+            confirmButtonText: 'OK'
         });
     }
 

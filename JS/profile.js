@@ -2,15 +2,14 @@ import { auth, onAuthStateChanged } from "../firebase.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   onAuthStateChanged(auth, (user) => {
-    const uidLocal = localStorage.getItem("uid");
-    if (!uidLocal || !user || user.uid !== uidLocal) {
+    if (!user) {
       Swal.fire({
         icon: 'warning',
-        title: 'رسائی ممنوع',
-        text: 'براہ کرم پہلے لاگ ان کریں!',
-        confirmButtonText: 'لاگ ان پر جائیں'
+        title: 'Access Denied',
+        text: 'Please login first to access this page!',
+        confirmButtonText: 'Go to Login'
       }).then(() => {
-        window.location.replace("./index.html");
+        window.location.replace("../index.html");
       });
     }
   });
@@ -20,9 +19,9 @@ if (logoutButton) {
   logoutButton.addEventListener("click", async () => {
     Swal.fire({
       icon: 'success',
-      title: 'لاگ آؤٹ',
-      text: 'آپ کامیابی سے لاگ آؤٹ ہو گئے ہیں!',
-      confirmButtonText: 'ٹھیک ہے'
+      title: 'Logged Out',
+      text: 'You have been logged out successfully!',
+      confirmButtonText: 'OK'
     }).then(() => {
       window.location.replace("./index.html");
     });
