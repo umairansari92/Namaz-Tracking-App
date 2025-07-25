@@ -9,56 +9,82 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/utilities.css">
-    <title>Document</title>
+    <title>محاسبۂ نماز</title>
 </head>
 
-<body>
+<body onload="privateRouteCheck()">
     <div class="container">
         <div class="navbar">
             <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">History</a></li>
-                <li><a href="">Profile</a></li>
+                <li><a href="#  ">Home</a></li>
+                <li><a href="./history.html">History</a></li>
+                <li><a href="./profile.html">Profile</a></li>
             </ul>
             <button>Logout</button>
         </div>
         <div class="mainPage">
-            <h1>Namaz Tracking App</h1>
+            <h1 class="app-title-urdu">محاسبۂ نماز و اذکار</h1>
             <div class="card">
                 <div class="cardHeader">
-                    <h2>Assalam-o-Alikum</h2>
-                    <h3>Welcome To App</h3>
-                    <h3>Umair Ahmed</h3>
-                    <p>umair.ansari.92@gmail.com</p>
+                    <h2 class="urdu-salam-heading">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</h2>
+                    <div class="urdu-salam-subtitle">خوش آمدید! آپ کی نمازوں کی ٹریکنگ کے لیے</div>
                 </div>
                 <div class="namazTracker" id="namazTracker">
                     <ul>
                         <li>
-                            <p>Fajar</p><button>✅</button>
+                            <p>Fajar</p>
+                            <button data-namaz="Fajr">❌</button>
+                            <span id="FajrTime">⏰</span>
                         </li>
                         <li>
-                            <p>Zuhur</p><button>✅</button>
+                            <p>Zuhur</p><button data-namaz="Dhuhr">❌</button>
+                            <span id="DhuhrTime">⏰</span>
                         </li>
                         <li>
-                            <p>Asar</p><button>✅</button>
+                            <p>Asar</p><button data-namaz="Asr">❌</button>
+                            <span id="AsrTime">⏰</span>
                         </li>
                         <li>
-                            <p>Maghrib</p><button>✅</button>
+                            <p>Maghrib</p><button data-namaz="Maghrib">❌</button>
+                            <span id="MaghribTime">⏰</span>
                         </li>
                         <li>
-                            <p>Isha</p><button>✅</button>
+                            <p>Isha</p><button data-namaz="Isha">❌</button>
+                            <span id="IshaTime">⏰</span>
                         </li>
                     </ul>
-
                 </div>
+
             </div>
 
         </div>
     </div>
 
-
+    <!-- <div>
+                        <span class="namaz-Name">Fajar</span>
+                        <span id="FajrTime">⏰</span>
+                        <button data-namaz="Fajr">❌</button>
+                    </div>
+                    <div>
+                        <p>Zuhur</p>
+                        <button data-namaz="Dhuhr">❌</button>
+                        <span id="DhuhrTime">⏰</span>
+                    </div>
+                    <div>
+                        <button data-namaz="Asr">❌</button>
+                        <span id="AsrTime">⏰</span>
+                    </div>
+                    <div>
+                        <button data-namaz="Maghrib">❌</button>
+                        <span id="MaghribTime">⏰</span>
+                    </div>
+                    <div>
+                        <button data-namaz="Isha">❌</button>
+                        <span id="IshaTime">⏰</span>
+                    </div> -->
 
     <footer style="text-align: center; padding: 20px; font-size: 14px; color: rgb(255, 251, 251);">
         Developed by <strong>Umair Ahmed Ansari</strong> — Web App Developer
