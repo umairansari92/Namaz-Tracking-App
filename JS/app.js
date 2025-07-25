@@ -262,6 +262,8 @@ const isNamazTimePassed = (namazTimeStr) => {
 const logoutButton = document.querySelector(".navbar button");
 if (logoutButton) {
   logoutButton.addEventListener("click", async () => {
+    // Remove uid from localStorage on logout
+    localStorage.removeItem("uid");
     Swal.fire({
       icon: 'success',
       title: 'Logout Successful',

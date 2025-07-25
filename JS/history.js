@@ -153,6 +153,7 @@ if (logoutButton) {
       text: 'You have been logged out successfully!',
       confirmButtonText: 'OK'
     }).then(() => {
+      localStorage.removeItem("uid");
       window.location.replace("../index.html");
     });
   });

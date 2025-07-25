@@ -280,7 +280,6 @@ body {
 
 /* ======== Main Page Styling start======== */
 .mainPage {
-  border: 3px solid white;
   min-height: 90vh;
   display: flex;
   flex-direction: column;

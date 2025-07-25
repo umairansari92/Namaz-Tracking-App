@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const logoutButton = document.querySelector(".navbar button");
 if (logoutButton) {
   logoutButton.addEventListener("click", async () => {
+    localStorage.removeItem("uid");
     Swal.fire({
       icon: 'success',
       title: 'Logged Out',
