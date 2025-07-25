@@ -1,3 +1,123 @@
+import { db,auth,getFirestore, collection, query, where, getDocs, doc, getDoc,onAuthStateChanged } from "../firebase.js";
+
+
+
+// ===============================
+// 🔐 User Authentication & Info
+// ===============================
+
+// Page load par user ki authentication check karo aur info show karo
+// Agar user login hai to salam ke neeche uski info show hogi
+
+document.addEventListener('DOMContentLoaded', () => {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      showUserInfoInHeader(user);
+    }
+  });
+});
+
+// User ki info (naam, email, tareekh) salam ke neeche show karne wala function
+async function showUserInfoInHeader(user) {
+  try {
+    const userDoc = await getDoc(doc(db, "users", user.uid));
+    if (!userDoc.exists()) return;
+    const data = userDoc.data();
+    const displayName = `${data.firstName ?? ""} ${data.lastName ?? ""}`;
+    const todayDate = new Date().toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+    const cardHeader = document.querySelector(".cardHeader");
+    cardHeader.innerHTML = `
+      <h2 class="urdu-salam-heading">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</h2>
+      <div class="urdu-salam-subtitle">خوش آمدید! آپ کی نمازوں کی ٹریکنگ کے لیے</div>
+      <h3 class="user-display-name">${displayName}</h3>
+      <p class="user-email">${user.email}</p>
+      <p class="user-date">${todayDate}</p>
+    `;
+  } catch (err) {
+    console.error("❌ Error loading card header:", err);
+  }
+}
+
+// ===============================
+// 📅 Namaz History Cards (7/30 din)
+// ===============================
+
+// Select box par event listener: jab user 7 ya 30 din select kare to namaz history fetch karo
+
+document.getElementById('prayerHistory').addEventListener('change', function() {
+    const days = this.value === "7 Days" ? 7 : 30;
+    fetchAndShowNamazHistory(days);
+});
+
+// Namaz history fetch kar ke cards ki soorat mein show karne wala function
+async function fetchAndShowNamazHistory(days) {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    // User ke namazTracker document se data lao
+    const userDocRef = doc(db, "namazTracker", user.uid);
+    const userDocSnap = await getDoc(userDocRef);
+
+    if (!userDocSnap.exists()) {
+        renderNamazHistoryCards([]); // Koi data nahi
+        return;
+    }
+
+    const data = userDocSnap.data(); // Yeh ek object hai jismein keys dates hain
+
+    // Dates filter karo (sirf last 7 ya 30 din)
+    const today = new Date();
+    const startDate = new Date();
+    startDate.setDate(today.getDate() - (days - 1));
+
+    const filteredDates = Object.keys(data)
+        .filter(dateStr => {
+            const dateObj = new Date(dateStr);
+            return dateObj >= startDate && dateObj <= today;
+        })
+        .sort((a, b) => new Date(b) - new Date(a)); // Newest pehle
+
+    // Har date ka record bana lo
+    const records = filteredDates.map(dateStr => ({
+        date: dateStr,
+        prayers: data[dateStr]
+    }));
+
+    renderNamazHistoryCards(records);
+}
+
+// Namaz history cards ko grid mein render karne wala function
+function renderNamazHistoryCards(data) {
+    const container = document.querySelector('.prayerHistoryCard');
+    container.innerHTML = "";
+
+    if (data.length === 0) {
+        container.innerHTML = "<p>Koi record nahi mila</p>";
+        return;
+    }
+
+    data.forEach(record => {
+        const { date, prayers } = record;
+        const card = document.createElement('div');
+        card.className = "singlePrayerCard";
+        card.innerHTML = `
+            <h3>${date}</h3>
+            <ul>
+                <li>Fajr: <span class="${prayers.Fajr ? 'offered' : 'missed'}">${prayers.Fajr ? 'Ada' : 'Qaza'}</span></li>
+                <li>Dhuhr: <span class="${prayers.Dhuhr ? 'offered' : 'missed'}">${prayers.Dhuhr ? 'Ada' : 'Qaza'}</span></li>
+                <li>Asr: <span class="${prayers.Asr ? 'offered' : 'missed'}">${prayers.Asr ? 'Ada' : 'Qaza'}</span></li>
+                <li>Maghrib: <span class="${prayers.Maghrib ? 'offered' : 'missed'}">${prayers.Maghrib ? 'Ada' : 'Qaza'}</span></li>
+                <li>Isha: <span class="${prayers.Isha ? 'offered' : 'missed'}">${prayers.Isha ? 'Ada' : 'Qaza'}</span></li>
+            </ul>
+        `;
+        container.appendChild(card);
+    });
+}
+
 const logoutButton = document.querySelector(".navbar button");
 if (logoutButton) {
   logoutButton.addEventListener("click", async () => {

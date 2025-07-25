@@ -11,7 +11,7 @@
         rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/utilities.css">
+    <link rel="stylesheet" href="../CSS/Responsive.css">
     <title>محاسبۂ نماز</title>
 </head>
 
@@ -25,7 +25,7 @@
             </ul>
             <button>Logout</button>
         </div>
-        <div class="mainPage">
+        <div class="mainHistoryPage">
             <h1 class="app-title-urdu">محاسبۂ نماز و اذکار</h1>
             <div class="card">
                 <div class="cardHeader">
@@ -33,9 +33,17 @@
                     <div class="urdu-salam-subtitle">خوش آمدید! آپ کی نمازوں کی ٹریکنگ کے لیے</div>
                 </div>
                 
-
             </div>
+            <div class="prayerHistory" id="prayerHistory">
+                <select>
+                    <option disabled selected>History Of Prayers</option>
+                    <option value="7 Days">7 Days</option>
+                    <option value="30 Days">30 Days</option>
+                </select>
+                <div class="prayerHistoryCard">
 
+                </div>
+            </div>
         </div>
     </div>
 

@@ -18,6 +18,7 @@ const privateRouteCheck = () => {
       // ✅ User authenticated, load card header
       loadCardHeader(user);
       setupNamazTracker();
+      generateTestNamazTracker(user.uid); // Optional: Generate test data for 30 days
     }
   });
 };
@@ -262,3 +263,31 @@ if (logoutButton) {
 
 // 🔁 Call route check on load
 window.privateRouteCheck = privateRouteCheck;
+
+// Helper: Generate 30 days of namazTracker data ending at 25-07-2025
+async function generateTestNamazTracker(uid) {
+  const endDate = new Date("2025-07-25");
+  const dates = [];
+  for (let i = 0; i < 30; i++) {
+    const d = new Date(endDate);
+    d.setDate(d.getDate() - i);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    dates.push(`${yyyy}-${mm}-${dd}`);
+  }
+  const trackerData = {};
+  dates.forEach(date => {
+    trackerData[date] = {
+      Fajr: false,
+      Dhuhr: false,
+      Asr: false,
+      Maghrib: false,
+      Isha: false,
+    };
+  });
+  await setDoc(doc(db, "namazTracker", uid), trackerData, { merge: true });
+  console.log("Test data added for 30 days");
+}
+
+// Example usage: generateTestNamazTracker("USER_UID");
