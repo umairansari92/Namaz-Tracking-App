@@ -23,40 +23,54 @@ const authCheck = () => {
 const signUpHandler = async () => {
 
     try {
-        const firstName = document.querySelector("#firstName")
-    const lastName = document.querySelector("#lastName")
-    const email = document.querySelector("#email")
-    const password = document.querySelector("#password")
+        const firstName = document.querySelector("#firstName");
+        const lastName = document.querySelector("#lastName");
+        const email = document.querySelector("#email");
+        const password = document.querySelector("#password");
 
+        // Field validation
+        if (!firstName.value || !lastName.value || !email.value || !password.value) {
+            Swal.fire({
+                icon: 'error',
+                title: 'تمام فیلڈز لازمی ہیں',
+                text: 'براہ کرم تمام معلومات درج کریں!',
+                confirmButtonText: 'ٹھیک ہے'
+            });
+            return;
+        }
 
-    console.log("firstName", firstName.value);
-    console.log("lastName", lastName.value);
-    console.log("email", email.value);
-    console.log("password", password.value);
+        const response = await createUserWithEmailAndPassword(auth, email.value, password.value);
+        const userUId = response.user.uid;
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const signupDate = `${yyyy}-${mm}-${dd}`;
 
-    const response = await createUserWithEmailAndPassword(auth, email.value, password.value)
-
-    console.log("user", response);
-    const userUId = response.user.uid
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dd = String(today.getDate()).padStart(2, '0');
-    const signupDate = `${yyyy}-${mm}-${dd}`;
-
-    const userObject = {
-        firstName: firstName.value,
-        lastName: lastName.value,
-        email: email.value,
-        password: password.value,
-        uid: response.user.uid,
-        signupDate: signupDate
-    }
-    const userResponse = await setDoc(doc(db, "users", userUId), userObject)
-    console.log(userResponse, "userResponse")
-        window.location.replace("../index.html");
+        const userObject = {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value,
+            password: password.value,
+            uid: response.user.uid,
+            signupDate: signupDate
+        };
+        await setDoc(doc(db, "users", userUId), userObject);
+        Swal.fire({
+            icon: 'success',
+            title: 'رجسٹریشن کامیاب',
+            text: 'آپ کا اکاؤنٹ بن گیا ہے!',
+            confirmButtonText: 'جاری رکھیں'
+        }).then(() => {
+            window.location.replace("../index.html");
+        });
     } catch (error) {
-        console.log("error", error.message);
+        Swal.fire({
+            icon: 'error',
+            title: 'رجسٹریشن ناکام',
+            text: error.message,
+            confirmButtonText: 'ٹھیک ہے'
+        });
     }
 }
 

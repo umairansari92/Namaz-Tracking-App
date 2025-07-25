@@ -16,24 +16,38 @@ const authCheck = () => {
 
 
 const signInHandler = async () => {
-try {
-        const email = document.querySelector("#loginEmail")
-    const password = document.querySelector("#loginPassword")
+    try {
+        const email = document.querySelector("#loginEmail");
+        const password = document.querySelector("#loginPassword");
 
-    console.log(email.value)
-    console.log(password.value)
-    if (!email.value || !password.value) {
-        alert("Required fields are missing")
-        return;
+        if (!email.value || !password.value) {
+            Swal.fire({
+                icon: 'error',
+                title: 'تمام فیلڈز لازمی ہیں',
+                text: 'براہ کرم ای میل اور پاسورڈ درج کریں!',
+                confirmButtonText: 'ٹھیک ہے'
+            });
+            return;
+        }
+
+        const response = await signInWithEmailAndPassword(auth, email.value, password.value);
+        localStorage.setItem("uid", response.user.uid);
+        Swal.fire({
+            icon: 'success',
+            title: 'لاگ ان کامیاب',
+            text: 'خوش آمدید!',
+            confirmButtonText: 'جاری رکھیں'
+        }).then(() => {
+            window.location.replace("../HTML/dashboard.html");
+        });
+    } catch (error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'لاگ ان ناکام',
+            text: error.message,
+            confirmButtonText: 'ٹھیک ہے'
+        });
     }
-
-    const response = await signInWithEmailAndPassword(auth, email.value, password.value)
-    console.log("login response", response.user.uid);
-    localStorage.setItem("uid", response.user.uid);
-    window.location.replace("../HTML/dashboard.html")
-} catch (error) {
-    alert(error.message)
-}
 
 
 }
