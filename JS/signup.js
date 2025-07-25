@@ -4,7 +4,7 @@ import {
     db,
     doc,
     setDoc,
-} from "./firebase.js";
+} from "../firebase.js";
 
 console.log("auth", auth);
 

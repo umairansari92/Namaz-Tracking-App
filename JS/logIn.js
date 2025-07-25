@@ -2,7 +2,7 @@ import {
     app,
     auth,
     signInWithEmailAndPassword
-} from "./firebase.js";
+} from "../firebase.js";
 
 const authCheck = () => {
     console.log("authCheck");

@@ -6,7 +6,7 @@ import {
   getDoc,
   setDoc,
   updateDoc,
-} from "./firebase.js";
+} from "../firebase.js";
 // 🔐 Auth Check
 const privateRouteCheck = () => {
   const uidLocal = localStorage.getItem("uid");
