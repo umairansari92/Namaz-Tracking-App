@@ -1,7 +1,5 @@
 import {
-    addDoc,
     auth,
-    collection,
     createUserWithEmailAndPassword,
     db,
     doc,
