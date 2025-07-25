@@ -48,8 +48,15 @@ async function showUserInfoInHeader(user) {
 
 // Select box par event listener: jab user 7 ya 30 din select kare to namaz history fetch karo
 
-document.getElementById('prayerHistory').addEventListener('change', function() {
+const prayerHistorySelect = document.querySelector('.prayerHistory select');
+prayerHistorySelect.addEventListener('change', function() {
     const days = this.value === "7 Days" ? 7 : 30;
+    fetchAndShowNamazHistory(days);
+});
+
+// Page load par default value se history dikhao
+document.addEventListener('DOMContentLoaded', () => {
+    const days = prayerHistorySelect.value === "7 Days" ? 7 : 30;
     fetchAndShowNamazHistory(days);
 });
 
@@ -69,22 +76,31 @@ async function fetchAndShowNamazHistory(days) {
 
     const data = userDocSnap.data(); // Yeh ek object hai jismein keys dates hain
 
-    // Dates filter karo (sirf last 7 ya 30 din)
-    const today = new Date();
-    const startDate = new Date();
-    startDate.setDate(today.getDate() - (days - 1));
+    // Helper: Get last N days as yyyy-mm-dd strings
+    function getLastNDates(n) {
+      const arr = [];
+      const today = new Date();
+      for (let i = 0; i < n; i++) {
+        const d = new Date(today.getTime() - i * 24 * 60 * 60 * 1000);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, "0");
+        const dd = String(d.getDate()).padStart(2, "0");
+        arr.push(`${yyyy}-${mm}-${dd}`);
+      }
+      return arr;
+    }
 
-    const filteredDates = Object.keys(data)
-        .filter(dateStr => {
-            const dateObj = new Date(dateStr);
-            return dateObj >= startDate && dateObj <= today;
-        })
-        .sort((a, b) => new Date(b) - new Date(a)); // Newest pehle
-
-    // Har date ka record bana lo
-    const records = filteredDates.map(dateStr => ({
-        date: dateStr,
-        prayers: data[dateStr]
+    // Generate newest first, no need to sort
+    const lastNDates = getLastNDates(days);
+    const records = lastNDates.map(dateStr => ({
+      date: dateStr,
+      prayers: data[dateStr] || {
+        Fajr: false,
+        Dhuhr: false,
+        Asr: false,
+        Maghrib: false,
+        Isha: false,
+      }
     }));
 
     renderNamazHistoryCards(records);
