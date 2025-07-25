@@ -7,6 +7,12 @@
 }
 
 @media screen and (max-width: 600px) {
+    .navbar  {
+        padding: 15px 13px;
+    }
+    .navbar ul {
+  gap: 10px;
+}
   .navbar ul li a {
     font-size: 15px;
     font-weight: 400;

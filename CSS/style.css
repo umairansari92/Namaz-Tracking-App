@@ -205,6 +205,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 255, 191, 0.4);
   margin: 20px auto;
   max-width: 1100px;
+  gap: 10px;
 }
 
 /* Navbar List */
