@@ -264,9 +264,9 @@ if (logoutButton) {
   logoutButton.addEventListener("click", async () => {
     Swal.fire({
       icon: 'success',
-      title: 'لاگ آؤٹ',
-      text: 'آپ کامیابی سے لاگ آؤٹ ہو گئے ہیں!',
-      confirmButtonText: 'ٹھیک ہے'
+      title: 'Logout Successful',
+      text: 'You have been logged out successfully!',
+      confirmButtonText: 'Okay'
     }).then(() => {
       window.location.replace("../index.html");
     });
