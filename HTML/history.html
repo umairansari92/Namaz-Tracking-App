@@ -2,17 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>محاسبۂ نماز | Namaz Tracking System</title>
+
+    <!-- ✅ Description -->
+    <meta name="description"
+        content="Namaz Tracking System by Umair Ahmed Ansari – A spiritual companion to track your daily prayers with ease." />
+
+    <!-- ✅ Author -->
+    <meta name="author" content="Umair Ahmed Ansari" />
+
+    <!-- ✅ Favicon (absolute URL for social sharing) -->
+    <link rel="icon" href="https://namaztrackingapp.vercel.app/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="https://namaztrackingapp.vercel.app/favicon.png" type="image/x-icon" />
+
+    <!-- ✅ Open Graph Meta (for WhatsApp, Facebook, etc.) -->
+    <meta property="og:title" content="Namaz Tracking System | محاسبۂ نماز" />
+    <meta property="og:description"
+        content="Track your daily prayers effortlessly with this spiritual web app by Umair Ahmed Ansari." />
+    <meta property="og:image" content="https://namaztrackingapp.vercel.app/preview.png" />
+    <meta property="og:url" content="https://namaztrackingapp.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Namaz Tracking System" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- ✅ WhatsApp & Social: Favicon as og:image -->
+    <meta property="og:image:alt" content="Namaz Tracking System Favicon" />
+    <meta property="og:image" content="https://namaztrackingapp.vercel.app/favicon.png" />
+
+    <!-- ✅ Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Namaz Tracking System | محاسبۂ نماز" />
+    <meta name="twitter:description"
+        content="Track your daily prayers effortlessly with this spiritual web app by Umair Ahmed Ansari." />
+    <meta name="twitter:image" content="https://namaztrackingapp.vercel.app/preview.png" />
+    <meta name="twitter:image:alt" content="Namaz Tracking System Favicon" />
+
+    <!-- ✅ Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+
+    <!-- ✅ PWA Manifest -->
+    <link rel="manifest" href="./manifest.json" />
+
+    <!-- SweetAlert2  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/Responsive.css">
-    <title>محاسبۂ نماز</title>
 </head>
 
 <body onload="privateRouteCheck()">
@@ -32,7 +76,7 @@
                     <h2 class="urdu-salam-heading">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</h2>
                     <div class="urdu-salam-subtitle">خوش آمدید! آپ کی نمازوں کی ٹریکنگ کے لیے</div>
                 </div>
-                
+
             </div>
             <div class="prayerHistory" id="prayerHistory">
                 <select>
