@@ -264,7 +264,7 @@ if (logoutButton) {
 // 🔁 Call route check on load
 window.privateRouteCheck = privateRouteCheck;
 
-// Helper: Generate 30 days of namazTracker data ending at 25-07-2025
+// Helper: Generate 30 days of namazTracker data ending at 23-07-2025
 async function generateTestNamazTracker(uid) {
   const endDate = new Date("2025-07-25");
   const dates = [];
