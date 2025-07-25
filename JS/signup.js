@@ -56,6 +56,7 @@ const signUpHandler = async () => {
     }
     const userResponse = await setDoc(doc(db, "users", userUId), userObject)
     console.log(userResponse, "userResponse")
+        window.location.replace("../index.html");
     } catch (error) {
         console.log("error", error.message);
     }
