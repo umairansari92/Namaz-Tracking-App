@@ -182,6 +182,12 @@ body {
 
 /* ============= Notification Styling End ============= */
 
+
+
+
+
+
+
 /* ============= Dashboard Styling Start ============= */
 
 /* ========== Navbar Styling Start ========== */
@@ -295,82 +301,6 @@ body {
 }
 
 /* ======== Card Header ======== */
-.cardHeader h2,
-.cardHeader h3,
-.cardHeader p {
-  text-align: center;
-  margin: 8px 0;
-}
-
-.cardHeader h2 {
-  font-size: 45px;
-  color: #00ffc3;
-}
-
-.cardHeader h3 {
-  font-size: 35px;
-}
-
-.cardHeader p {
-  font-size: 25px;
-  color: #ccc;
-}
-
-/* ======== Namaz Tracker ======== */
-.namazTracker ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-}
-
-.namazTracker ul li {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(0, 255, 195, 0.3);
-  border-radius: 12px;
-  padding: 12px 20px;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  transition: transform 0.2s ease;
-}
-
-.namazTracker ul li:hover {
-  transform: scale(1.02);
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
-.namazTracker ul li p {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-/* ======== Namaz Buttons ======== */
-.namazTracker ul li button {
-  background-color: #00ffc3;
-  border: none;
-  color: black;
-  padding: 6px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.namazTracker ul li button:hover {
-  background-color: #00cfa3;
-}
-
-/* ======== Main Page Styling End======== */
-
-/* ============= Dashboard Styling End ============= */
-
 /* ============= Urdu Salam Heading & Subtitle ============= */
 .urdu-salam-heading {
   font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq",
@@ -445,6 +375,80 @@ body {
   text-shadow: 0 2px 12px #00b89444, 0 0 18px #58d6bd55;
   text-decoration: underline dotted;
 }
+.cardHeader h2,
+.cardHeader h3,
+.cardHeader p {
+  text-align: center;
+  margin: 8px 0;
+}
+
+
+
+.cardHeader h3 {
+  font-size: 35px;
+}
+
+  .cardHeader p {
+    font-size: 25px;
+    color: #ccc;
+  }
+
+/* ======== Namaz Tracker ======== */
+.namazTracker ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.namazTracker ul li {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 255, 195, 0.3);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.2s ease;
+}
+
+.namazTracker ul li:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.namazTracker ul li p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* ======== Namaz Buttons ======== */
+  .namazTracker ul li button {
+    background-color: #00ffc3;
+    border: none;
+    color: black;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+.namazTracker ul li button:hover {
+  background-color: #00cfa3;
+}
+
+/* ======== Main Page Styling End======== */
+
+/* ============= Dashboard Styling End ============= */
+
+
 
 /* ============= History Page Styling ============= */
 .mainHistoryPage {
@@ -462,7 +466,6 @@ body {
   gap: 24px;
   margin-top: 32px;
   margin-bottom: 32px;
-  flex-wrap: wrap;
 }
 
 .singlePrayerCard {

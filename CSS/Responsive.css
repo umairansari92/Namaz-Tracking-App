@@ -1,0 +1,48 @@
+@media screen and (max-width: 800px) {
+  .prayerHistoryCard {
+    grid-template-columns: repeat(2, 1fr);
+
+}
+    
+}
+
+@media screen and (max-width: 600px) {
+  .navbar ul li a {
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0px 0;
+  }
+  .app-title-urdu {
+    font-size: 2rem;
+  }
+  .urdu-salam-heading {
+    font-size: 1.5rem;
+  }
+  .urdu-salam-subtitle{
+  font-size: 1rem;
+
+  }
+  .cardHeader h3 {
+  font-size: 25px;
+}
+
+.cardHeader p {
+  font-size: 20px;
+}
+.namazTracker ul li p {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.namazTracker ul li button {
+  padding: 3px 9px;
+  font-size: 15px;
+  font-weight: 400;
+}
+.prayerHistoryCard {
+    grid-template-columns: repeat(1, 1fr);
+
+}
+
+
+}
