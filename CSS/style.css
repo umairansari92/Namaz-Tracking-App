@@ -280,7 +280,7 @@ body {
 
 /* ======== Main Page Styling start======== */
 .mainPage {
-  min-height: 90vh;
+  /* min-height: 90vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -305,7 +305,7 @@ body {
 .urdu-salam-heading {
   font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq",
     "Noto Nastaliq Urdu Draft", "Noto Sans Arabic", serif;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
   letter-spacing: 3px;
@@ -331,7 +331,10 @@ body {
 /* ============= User Info in Card Header ============= */
 .user-display-name {
   font-family: "Poppins", sans-serif;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-decoration: underline dotted;
+  font-variant: small-caps;
   color: #fff;
   text-align: center;
   margin: 0.5rem 0 0 0;
@@ -380,12 +383,6 @@ body {
 .cardHeader p {
   text-align: center;
   margin: 8px 0;
-}
-
-
-
-.cardHeader h3 {
-  font-size: 35px;
 }
 
   .cardHeader p {
@@ -452,7 +449,6 @@ body {
 
 /* ============= History Page Styling ============= */
 .mainHistoryPage {
-  border: 3px solid white;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
