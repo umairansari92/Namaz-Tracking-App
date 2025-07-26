@@ -1,5 +1,35 @@
 import { db,auth,getFirestore, collection, query, where, getDocs, doc, getDoc,onAuthStateChanged } from "../firebase.js";
 
+// 🌙 Fetch Hijri Date from AlAdhan API (same function as in app.js)
+const fetchHijriDate = async () => {
+  try {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const yyyy = today.getFullYear();
+    const gregorianDate = `${dd}-${mm}-${yyyy}`;
+    
+    const response = await fetch(`https://api.aladhan.com/v1/gToH/${gregorianDate}`);
+    const data = await response.json();
+    
+    if (data.code === 200) {
+      const hijri = data.data.hijri;
+      return {
+        day: hijri.day,
+        month: hijri.month.en,
+        monthAr: hijri.month.ar,
+        year: hijri.year,
+        weekday: hijri.weekday.en,
+        weekdayAr: hijri.weekday.ar,
+        designation: hijri.designation.abbreviated
+      };
+    }
+    return null;
+  } catch (error) {
+    console.error("Failed to fetch Hijri date:", error);
+    return null;
+  }
+};
 
 
 // ===============================
@@ -39,6 +69,14 @@ async function showUserInfoInHeader(user) {
       month: "short",
       year: "numeric",
     });
+    
+    // 🌙 Get Hijri date for history page too
+    const hijriData = await fetchHijriDate();
+    let hijriDateStr = "";
+    if (hijriData) {
+      hijriDateStr = `${hijriData.day} ${hijriData.month} ${hijriData.year} ${hijriData.designation}`;
+    }
+    
     const cardHeader = document.querySelector(".cardHeader");
     cardHeader.innerHTML = `
       <h2 class="urdu-salam-heading">السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</h2>
@@ -46,6 +84,7 @@ async function showUserInfoInHeader(user) {
       <h3 class="user-display-name">${displayName}</h3>
       <p class="user-email">${user.email}</p>
       <p class="user-date">${todayDate}</p>
+      ${hijriData ? `<p class="hijri-date">📅 ${hijriDateStr}</p>` : ''}
     `;
   } catch (err) {
     console.error("❌ Error loading card header:", err);

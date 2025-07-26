@@ -347,6 +347,22 @@ body {
   margin: 0;
 }
 
+/* ============= Hijri Date Styling ============= */
+.hijri-date {
+  font-family: "Lato", sans-serif;
+  color: #00ffc3;
+  text-align: center;
+  margin: 8px 0 0 0;
+  font-size: 16px;
+  font-weight: 500;
+  background: rgba(0, 255, 195, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 255, 195, 0.3);
+  backdrop-filter: blur(4px);
+  display: inline-block;
+}
+
 /* ============= App Title Urdu ============= */
 .app-title-urdu {
   font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq",

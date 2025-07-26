@@ -54,6 +54,12 @@
     font-size: 12px;
     font-weight: 400;
  }
+
+.hijri-date {
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
 .prayerHistoryCard {
     grid-template-columns: repeat(1, 1fr);
 
